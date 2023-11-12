@@ -28,6 +28,19 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
+class MyImageButton extends StatelessWidget {
+  String title;
+  String path;
+
+  MyImageButton(this.title, this.path, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(path);
+  }
+}
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -39,78 +52,18 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.black,
         title: SvgPicture.asset(
           "assets/appsflyer-logo.svg",
+          // ignore: deprecated_member_use
           color: Colors.white,
           width: 130,
         ),
       ),
-      body: const Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Text('Left', textAlign: TextAlign.left),
-          Center(
-            child: Text(
-              'Flutter',
-              style: TextStyle(
-                color: Colors.blue,
-                fontSize: 30,
-              ),
-            ),
-          ),
-          Center(
-            child: Text(
-              'Flutter',
-              style: TextStyle(
-                color: Colors.blue,
-                fontSize: 30,
-              ),
-            ),
-          ),
-          Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  'Flutter',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 30,
-                  ),
-                ),
-                Text(
-                  'Flutter',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 30,
-                  ),
-                ),
-                Text(
-                  'Flutter',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 30,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+      body: MyImageButton("assets/images/apples.png", "Apples"),
     );
   }
 }
 
 class ApplesPage extends StatelessWidget {
   const ApplesPage({super.key});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   @override
   Widget build(BuildContext context) {
@@ -131,24 +84,15 @@ class ApplesPage extends StatelessWidget {
 class BananasPage extends StatelessWidget {
   const BananasPage({super.key});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text("title"),
+        title: const Text("title"),
       ),
-      body: Center(
-        child: const Text(
+      body: const Center(
+        child: Text(
           'You have pushed the button this many times:',
         ),
       ),
@@ -159,24 +103,15 @@ class BananasPage extends StatelessWidget {
 class PeachesPage extends StatelessWidget {
   const PeachesPage({super.key});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text("title"),
+        title: const Text("title"),
       ),
-      body: Center(
-        child: const Text(
+      body: const Center(
+        child: Text(
           'You have pushed the button this many times:',
         ),
       ),
