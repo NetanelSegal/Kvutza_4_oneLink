@@ -28,18 +28,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// class MyImageButton extends StatelessWidget {
-//   String title;
-//   String path;
-
-//   MyImageButton(this.title, this.path, {super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Image.asset(path);
-//   }
-// }
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -50,15 +38,24 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.black,
         title: SvgPicture.asset(
-          "assets/appsflyer-logo.svg",
+          "assets/images/appsflyer-logo.svg",
           // ignore: deprecated_member_use
           color: Colors.white,
           width: 130,
         ),
       ),
-      // MyImageButton("assets/images/apples.png", "Apples")
-      body: Text("asd"),
+      body: MyImageButton("Apples", "assets/images/apples.jpg"),
     );
+  }
+}
+
+class MyImageButton extends StatelessWidget {
+  final String title, path;
+  const MyImageButton(this.title, this.path, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(path);
   }
 }
 
