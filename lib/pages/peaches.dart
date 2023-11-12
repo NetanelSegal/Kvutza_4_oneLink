@@ -19,7 +19,10 @@ class PeachesPage extends StatelessWidget {
       ),
       body: const Center(
         child: Text(
-          'You have pushed the button this many times:',
+          'Peaches page',
+          style: TextStyle(
+            fontSize: 20,
+          ),
         ),
       ),
     );

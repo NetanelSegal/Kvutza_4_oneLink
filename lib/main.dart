@@ -80,9 +80,21 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          MyImageButton("Apples", "assets/images/apples.jpg"),
-          MyImageButton("Bananas", "assets/images/bananas.jpg"),
-          MyImageButton("Peaches", "assets/images/peaches.jpg"),
+          MyImageButton(
+            "Apples",
+            "assets/images/apples.jpg",
+            "/apples",
+          ),
+          MyImageButton(
+            "Bananas",
+            "assets/images/bananas.jpg",
+            "/bananas",
+          ),
+          MyImageButton(
+            "Peaches",
+            "assets/images/peaches.jpg",
+            "/peaches",
+          ),
         ],
       ),
     );
@@ -90,8 +102,8 @@ class HomePage extends StatelessWidget {
 }
 
 class MyImageButton extends StatelessWidget {
-  final String title, path;
-  const MyImageButton(this.title, this.path, {super.key});
+  final String title, imgPath, routePath;
+  const MyImageButton(this.title, this.imgPath, this.routePath, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +117,7 @@ class MyImageButton extends StatelessWidget {
           backgroundColor: Colors.transparent,
         ),
         onPressed: () {
-          print("object");
+          Navigator.pushNamed(context, routePath);
         },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(18),
@@ -113,7 +125,7 @@ class MyImageButton extends StatelessWidget {
             alignment: Alignment.bottomRight,
             children: [
               Image.asset(
-                path,
+                imgPath,
                 height: 150,
                 width: double.infinity,
                 fit: BoxFit.cover,
