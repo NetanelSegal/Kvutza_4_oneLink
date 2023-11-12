@@ -1,6 +1,6 @@
 name: one_link_app
 description: A new Flutter project.
-publish_to: 'none' 
+publish_to: 'none'
 version: 1.0.0+1
 
 environment:
@@ -29,14 +29,14 @@ flutter:
     - family: Inter
       fonts:
         - asset: assets/fonts/Inter-Thin.ttf
-        weight: 200
-        - asset:  assets/fonts/Inter-Light.ttf
-        weight: 300
+          weight: 200
+        - asset: assets/fonts/Inter-Light.ttf
+          weight: 300
         - asset: assets/fonts/Inter-Regular.ttf
-        weight: 400
-        - asset:  assets/fonts/Inter-Bold.ttf
-        weight: 500
+          weight: 400
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 500
         - asset: assets/fonts/Inter-SemiBold.ttf
-        weight: 600
-        - asset:  assets/fonts/Inter-Black.ttf
-        weight: 700
+          weight: 600
+        - asset: assets/fonts/Inter-Black.ttf
+          weight: 700

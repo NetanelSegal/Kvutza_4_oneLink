@@ -28,18 +28,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// ignore: must_be_immutable
-class MyImageButton extends StatelessWidget {
-  String title;
-  String path;
+// class MyImageButton extends StatelessWidget {
+//   String title;
+//   String path;
 
-  MyImageButton(this.title, this.path, {super.key});
+//   MyImageButton(this.title, this.path, {super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset(path);
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Image.asset(path);
+//   }
+// }
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -57,7 +56,8 @@ class HomePage extends StatelessWidget {
           width: 130,
         ),
       ),
-      body: MyImageButton("assets/images/apples.png", "Apples"),
+      // MyImageButton("assets/images/apples.png", "Apples")
+      body: Text("asd"),
     );
   }
 }
