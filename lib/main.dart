@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import './pages/apples.dart';
+import './pages/bananas.dart';
+import './pages/peaches.dart';
 
 // 220d4e
 const Color colorAFBlue = Color.fromARGB(255, 0, 194, 255);
@@ -93,120 +96,46 @@ class MyImageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: horizontalPagePadding,
-        child: TextButton(
-          style: TextButton.styleFrom(
-            animationDuration: Duration.zero,
-            minimumSize: Size.zero,
-            padding: EdgeInsets.zero,
-            backgroundColor: Colors.transparent,
-          ),
-          onPressed: () {
-            print("object");
-          },
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(18),
-            child: Stack(
-              alignment: Alignment.bottomRight,
-              children: [
-                Image.asset(
-                  path,
-                  height: 150,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
+      padding: horizontalPagePadding,
+      child: TextButton(
+        style: TextButton.styleFrom(
+          animationDuration: Duration.zero,
+          minimumSize: Size.zero,
+          padding: EdgeInsets.zero,
+          backgroundColor: Colors.transparent,
+        ),
+        onPressed: () {
+          print("object");
+        },
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(18),
+          child: Stack(
+            alignment: Alignment.bottomRight,
+            children: [
+              Image.asset(
+                path,
+                height: 150,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+              Container(
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.fromLTRB(18, 5, 18, 5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: colorAFDark,
                 ),
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  padding: const EdgeInsets.fromLTRB(18, 5, 18, 5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: colorAFDark,
-                  ),
-                  child: Text(
-                    title,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ));
-  }
-}
-
-class ApplesPage extends StatelessWidget {
-  const ApplesPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 0, 194, 255),
-        title: SvgPicture.asset(
-          "assets/images/appsflyer-logo.svg",
-          // ignore: deprecated_member_use
-          color: Colors.white,
-          width: 130,
-        ),
-      ),
-      body: const Center(
-        child: Text(
-          'You have pushed the button this many times:',
-        ),
-      ),
-    );
-  }
-}
-
-class BananasPage extends StatelessWidget {
-  const BananasPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 0, 194, 255),
-        title: SvgPicture.asset(
-          "assets/images/appsflyer-logo.svg",
-          // ignore: deprecated_member_use
-          color: Colors.white,
-          width: 130,
-        ),
-      ),
-      body: const Center(
-        child: Text(
-          'You have pushed the button this many times:',
-        ),
-      ),
-    );
-  }
-}
-
-class PeachesPage extends StatelessWidget {
-  const PeachesPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 0, 194, 255),
-        title: SvgPicture.asset(
-          "assets/images/appsflyer-logo.svg",
-          // ignore: deprecated_member_use
-          color: Colors.white,
-          width: 130,
-        ),
-      ),
-      body: const Center(
-        child: Text(
-          'You have pushed the button this many times:',
         ),
       ),
     );
