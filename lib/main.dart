@@ -4,7 +4,6 @@ import './pages/apples.dart';
 import './pages/bananas.dart';
 import './pages/peaches.dart';
 
-// 220d4e
 const Color colorAFBlue = Color.fromARGB(255, 0, 194, 255);
 const Color colorAFGreen = Color.fromARGB(255, 122, 209, 67);
 const Color colorAFDark = Color.fromARGB(255, 19, 19, 19);
