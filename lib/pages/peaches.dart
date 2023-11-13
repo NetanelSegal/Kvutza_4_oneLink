@@ -6,6 +6,6 @@ class PeachesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const FruitPage("assets/images/peaches.jpg", 'Peaches title');
+    return const FruitPage("assets/images/peaches.png", 'Peaches title');
   }
 }

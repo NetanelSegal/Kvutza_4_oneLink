@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:one_link_app/main.dart';
 
 class FruitPage extends StatelessWidget {
   final String imgPath, title;
@@ -9,6 +10,20 @@ class FruitPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        bottomNavigationBar: Container(
+          height: 80,
+          color: colorAFBlue,
+          child: TextButton(
+            onPressed: () => print("Show convertion data..."),
+            child: const Text(
+              "Show convertion data",
+              style: TextStyle(
+                fontSize: 24,
+                color: colorAFDark,
+              ),
+            ),
+          ),
+        ),
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: const Color.fromARGB(255, 0, 194, 255),

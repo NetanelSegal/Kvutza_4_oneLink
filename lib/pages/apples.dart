@@ -6,6 +6,6 @@ class ApplesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const FruitPage("assets/images/apples.jpg", 'Apples title');
+    return const FruitPage("assets/images/apples.png", 'Apples title');
   }
 }

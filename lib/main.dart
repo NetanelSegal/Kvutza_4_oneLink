@@ -67,36 +67,39 @@ class HomePage extends StatelessWidget {
                 Text(
                   "OneLink Simulator",
                   style: TextStyle(
-                      fontSize: 32, fontWeight: FontWeight.w700, height: 1.8),
+                      fontSize: 36, fontWeight: FontWeight.w700, height: 1.8),
                 ),
                 Text(
                   "Find the magic of deep link parameters",
                   style: TextStyle(
                     height: 1.1,
-                    fontSize: 25,
+                    fontSize: 24,
                   ),
                 ),
               ],
             ),
-            Column(
-              children: [
-                MyImageButton(
-                  "Apples",
-                  "assets/images/apples.jpg",
-                  "/apples",
-                ),
-                MyImageButton(
-                  "Bananas",
-                  "assets/images/bananas.jpg",
-                  "/bananas",
-                ),
-                MyImageButton(
-                  "Peaches",
-                  "assets/images/peaches.jpg",
-                  "/peaches",
-                ),
-              ],
-            )
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MyImageButton(
+                    "Apples",
+                    "assets/images/apples.png",
+                    "/apples",
+                  ),
+                  MyImageButton(
+                    "Bananas",
+                    "assets/images/bananas.png",
+                    "/bananas",
+                  ),
+                  MyImageButton(
+                    "Peaches",
+                    "assets/images/peaches.png",
+                    "/peaches",
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -128,7 +131,7 @@ class MyImageButton extends StatelessWidget {
             children: [
               Image.asset(
                 imgPath,
-                height: 170,
+                height: 185,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
