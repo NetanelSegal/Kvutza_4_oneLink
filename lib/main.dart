@@ -65,7 +65,7 @@ class HomePage extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  "OneLink Simulator - check push pull",
+                  "OneLink Simulator",
                   style: TextStyle(
                       fontSize: 36, fontWeight: FontWeight.w700, height: 1.8),
                 ),
