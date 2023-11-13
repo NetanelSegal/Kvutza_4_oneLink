@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import './pages/apples.dart';
-import './pages/bananas.dart';
-import './pages/peaches.dart';
+import 'package:one_link_app/pages/apples.dart';
+import 'package:one_link_app/pages/bananas.dart';
+import 'package:one_link_app/pages/peaches.dart';
 
 const Color colorAFBlue = Color.fromARGB(255, 0, 194, 255);
 const Color colorAFGreen = Color.fromARGB(255, 122, 209, 67);
 const Color colorAFDark = Color.fromARGB(255, 19, 19, 19);
-const EdgeInsets horizontalPagePadding = EdgeInsets.symmetric(horizontal: 20);
+const EdgeInsets horizontalPagePadding = EdgeInsets.symmetric(horizontal: 10);
 
 void main() {
   runApp(const MyApp());
@@ -58,43 +58,47 @@ class HomePage extends StatelessWidget {
           width: 130,
         ),
       ),
-      body: const Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Center(
-            child: Text(
-              "OneLink Simulator",
-              style: TextStyle(
-                  fontSize: 32, fontWeight: FontWeight.w700, height: 1),
+      body: const Padding(
+        padding: horizontalPagePadding,
+        child: Column(
+          children: [
+            Column(
+              children: [
+                Text(
+                  "OneLink Simulator",
+                  style: TextStyle(
+                      fontSize: 32, fontWeight: FontWeight.w700, height: 1.8),
+                ),
+                Text(
+                  "Find the magic of deep link parameters",
+                  style: TextStyle(
+                    height: 1.1,
+                    fontSize: 25,
+                  ),
+                ),
+              ],
             ),
-          ),
-          Padding(
-            padding: horizontalPagePadding,
-            child: Text(
-              "Find the magic of deep link parameters",
-              style: TextStyle(
-                height: 1.2,
-                fontSize: 25,
-              ),
-            ),
-          ),
-          MyImageButton(
-            "Apples",
-            "assets/images/apples.jpg",
-            "/apples",
-          ),
-          MyImageButton(
-            "Bananas",
-            "assets/images/bananas.jpg",
-            "/bananas",
-          ),
-          MyImageButton(
-            "Peaches",
-            "assets/images/peaches.jpg",
-            "/peaches",
-          ),
-        ],
+            Column(
+              children: [
+                MyImageButton(
+                  "Apples",
+                  "assets/images/apples.jpg",
+                  "/apples",
+                ),
+                MyImageButton(
+                  "Bananas",
+                  "assets/images/bananas.jpg",
+                  "/bananas",
+                ),
+                MyImageButton(
+                  "Peaches",
+                  "assets/images/peaches.jpg",
+                  "/peaches",
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -107,7 +111,6 @@ class MyImageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: horizontalPagePadding,
       child: TextButton(
         style: TextButton.styleFrom(
           animationDuration: Duration.zero,
@@ -125,7 +128,7 @@ class MyImageButton extends StatelessWidget {
             children: [
               Image.asset(
                 imgPath,
-                height: 150,
+                height: 170,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
