@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'One Link AppsFlyer',
+      title: 'One Link AppsFlyer - new updates',
       theme: ThemeData(
         textTheme: const TextTheme(
           bodyMedium: TextStyle(
