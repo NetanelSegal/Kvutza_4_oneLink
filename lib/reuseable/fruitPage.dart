@@ -26,7 +26,7 @@ class FruitPage extends StatelessWidget {
         ),
         appBar: AppBar(
           centerTitle: true,
-          backgroundColor: const Color.fromARGB(255, 0, 194, 255),
+          backgroundColor: colorAFBlue,
           title: SvgPicture.asset(
             "assets/images/appsflyer-logo.svg",
             // ignore: deprecated_member_use
