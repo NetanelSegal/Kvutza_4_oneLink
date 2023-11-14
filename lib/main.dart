@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
 import 'package:one_link_app/pages/apples.dart';
 import 'package:one_link_app/pages/bananas.dart';
 import 'package:one_link_app/pages/peaches.dart';
@@ -50,7 +52,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 0, 194, 255),
+        backgroundColor: colorAFBlue,
         title: SvgPicture.asset(
           "assets/images/appsflyer-logo.svg",
           // ignore: deprecated_member_use
@@ -58,45 +60,54 @@ class HomePage extends StatelessWidget {
           width: 130,
         ),
       ),
-      body: const Padding(
+      body: Padding(
         padding: horizontalPagePadding,
         child: Column(
           children: [
             Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                Gap(15),
                 Text(
-                  "OneLink Simulator",
+                  "OneLink \nSimulator",
+                  textAlign: TextAlign.start,
                   style: TextStyle(
-                      fontSize: 36, fontWeight: FontWeight.w700, height: 1.8),
+                      fontSize: 40, height: 1, fontWeight: FontWeight.w700),
                 ),
                 Text(
                   "Find the magic of deep link parameters",
                   style: TextStyle(
-                    height: 1.1,
-                    fontSize: 24,
+                    fontSize: 18,
+                    height: 1.2,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
+                Gap(15)
               ],
             ),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  Gap(5),
                   MyImageButton(
                     "Apples",
                     "assets/images/apples.png",
                     "/apples",
                   ),
+                  Gap(5),
                   MyImageButton(
                     "Bananas",
                     "assets/images/bananas.png",
                     "/bananas",
                   ),
+                  Gap(5),
                   MyImageButton(
                     "Peaches",
                     "assets/images/peaches.png",
                     "/peaches",
                   ),
+                  Gap(5),
                 ],
               ),
             ),
@@ -108,12 +119,14 @@ class HomePage extends StatelessWidget {
 }
 
 class MyImageButton extends StatelessWidget {
+  int counter = 0;
   final String title, imgPath, routePath;
-  const MyImageButton(this.title, this.imgPath, this.routePath, {super.key});
+  MyImageButton(this.title, this.imgPath, this.routePath, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    counter++;
+    return Expanded(
       child: TextButton(
         style: TextButton.styleFrom(
           animationDuration: Duration.zero,
@@ -131,20 +144,19 @@ class MyImageButton extends StatelessWidget {
             children: [
               Image.asset(
                 imgPath,
-                height: 185,
                 width: double.infinity,
                 fit: BoxFit.cover,
-              ),
+              ).animate().fade(),
               Container(
-                margin: const EdgeInsets.all(10),
-                padding: const EdgeInsets.fromLTRB(18, 5, 18, 5),
+                margin: EdgeInsets.all(10),
+                padding: EdgeInsets.fromLTRB(18, 5, 18, 5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: colorAFDark,
                 ),
                 child: Text(
                   title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.white,
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
