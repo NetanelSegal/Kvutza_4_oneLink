@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:one_link_app/reuseable/fruitPage.dart';
+import 'package:one_link_app/reuseable/fruit_page.dart';
 
 class BananasPage extends StatelessWidget {
   const BananasPage({super.key});

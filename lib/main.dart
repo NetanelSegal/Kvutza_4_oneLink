@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
           width: 130,
         ),
       ),
-      body: Padding(
+      body: const Padding(
         padding: horizontalPagePadding,
         child: Column(
           children: [
@@ -90,22 +90,21 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Gap(5),
-                  MyImageButton(
-                    "Apples",
-                    "assets/images/apples.png",
-                    "/apples",
-                  ),
+                  MyImageButton("Apples", "assets/images/apples.png", "/apples",
+                      index: 0),
                   Gap(5),
                   MyImageButton(
                     "Bananas",
                     "assets/images/bananas.png",
                     "/bananas",
+                    index: 1,
                   ),
                   Gap(5),
                   MyImageButton(
                     "Peaches",
                     "assets/images/peaches.png",
                     "/peaches",
+                    index: 2,
                   ),
                   Gap(5),
                 ],
@@ -119,13 +118,13 @@ class HomePage extends StatelessWidget {
 }
 
 class MyImageButton extends StatelessWidget {
-  int counter = 0;
   final String title, imgPath, routePath;
-  MyImageButton(this.title, this.imgPath, this.routePath, {super.key});
+  final int index;
+  const MyImageButton(this.title, this.imgPath, this.routePath,
+      {required this.index, super.key});
 
   @override
   Widget build(BuildContext context) {
-    counter++;
     return Expanded(
       child: TextButton(
         style: TextButton.styleFrom(
@@ -146,17 +145,17 @@ class MyImageButton extends StatelessWidget {
                 imgPath,
                 width: double.infinity,
                 fit: BoxFit.cover,
-              ).animate().fade(),
+              ),
               Container(
-                margin: EdgeInsets.all(10),
-                padding: EdgeInsets.fromLTRB(18, 5, 18, 5),
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.fromLTRB(18, 5, 18, 5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: colorAFDark,
                 ),
                 child: Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
@@ -166,7 +165,10 @@ class MyImageButton extends StatelessWidget {
             ],
           ),
         ),
-      ),
+      )
+          .animate(delay: (0 + 400 * index).ms)
+          .moveY(begin: 10, end: 0, duration: 600.ms)
+          .fade(),
     );
   }
 }
