@@ -75,7 +75,7 @@ class HomePage extends StatelessWidget {
                       fontSize: 40, height: 1, fontWeight: FontWeight.w700),
                 ),
                 Text(
-                  "Find the magic of deep link parameters",
+                  "Find the magic of deep link\n parameters",
                   style: TextStyle(
                     fontSize: 18,
                     height: 1.2,
