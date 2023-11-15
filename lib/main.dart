@@ -166,7 +166,7 @@ class MyImageButton extends StatelessWidget {
           ),
         ),
       )
-          .animate(delay: (0 + 400 * index).ms)
+          .animate(delay: (300 + 300 * index).ms)
           .moveY(begin: 10, end: 0, duration: 600.ms)
           .fade(),
     );
