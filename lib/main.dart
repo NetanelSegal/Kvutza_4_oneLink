@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:appsflyer_sdk/appsflyer_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,13 +9,42 @@ import 'package:one_link_app/pages/apples.dart';
 import 'package:one_link_app/pages/bananas.dart';
 import 'package:one_link_app/pages/peaches.dart';
 
+// var afOptionsJSON = {
+//   "afDevKey": "sQ84wpdxRTR4RMCaE9YqS4",
+//   "afAppId": "id1292821412",
+//   "isDebug": true
+// };
+
 const Color colorAFBlue = Color.fromARGB(255, 0, 194, 255);
 const Color colorAFGreen = Color.fromARGB(255, 122, 209, 67);
 const Color colorAFDark = Color.fromARGB(255, 19, 19, 19);
 const EdgeInsets horizontalPagePadding = EdgeInsets.symmetric(horizontal: 10);
 
 void main() {
+  AppsFlyerOptions afOptionsDART = AppsFlyerOptions(
+      afDevKey: "sQ84wpdxRTR4RMCaE9YqS4",
+      appId: "id1292821412",
+      showDebug: true);
+
+  AppsflyerSdk appsflyerSdk = AppsflyerSdk(afOptionsDART);
+
+  appsflyerSdk.initSdk(
+      registerConversionDataCallback: true,
+      registerOnAppOpenAttributionCallback: true,
+      registerOnDeepLinkingCallback: true);
+  // appsflyerSdk.onInstallConversionData((res) {
+  //   print("res: " + res.toString());
+  // });
+
+  // print("afOptionsDART: " + afOptionsDART.toString());
+  // print("appsflyerSdk: " + appsflyerSdk);
   runApp(const MyApp());
+  appsflyerSdk.onInstallConversionData((res) {
+    print("res: " + res.toString());
+  });
+  appsflyerSdk.onAppOpenAttribution((res) {
+    print("res: " + res.toString());
+  });
 }
 
 class MyApp extends StatelessWidget {

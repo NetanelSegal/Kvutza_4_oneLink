@@ -34,46 +34,48 @@ class FruitPage extends StatelessWidget {
           width: 130,
         ),
       ),
-      body: Column(children: [
-        Center(
-          child: Image.asset(imgPath),
-        ),
-        Center(
-          child: Text(
-            title,
-            style: const TextStyle(
-              fontSize: 20,
+      body: Column(
+        children: [
+          Center(
+            child: Image.asset(imgPath),
+          ),
+          Center(
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontSize: 20,
+              ),
             ),
           ),
-        ),
-        Expanded(
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: ElevatedButton.icon(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+          Expanded(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: ElevatedButton.icon(
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
-                  ),
-                  backgroundColor: MaterialStateProperty.all(colorAFBlue)),
-              onPressed: () {},
-              icon: const Icon(
-                Icons.copy,
-                size: 24.0,
-                color: colorAFDark,
-              ),
-              label: const Text(
-                'copy link',
-                style: TextStyle(
-                  fontSize: 20,
+                    backgroundColor: MaterialStateProperty.all(colorAFBlue)),
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.copy,
+                  size: 24.0,
                   color: colorAFDark,
+                ),
+                label: const Text(
+                  'copy link',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: colorAFDark,
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 }
