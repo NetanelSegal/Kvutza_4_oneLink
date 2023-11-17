@@ -9,6 +9,8 @@ class FruitPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(Uri.base.toString());
+
     return Scaffold(
       bottomNavigationBar: Container(
         height: 80,
