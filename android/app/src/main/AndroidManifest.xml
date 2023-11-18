@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-package="one_link_app" >
+package="com.example.one_link_app" >
     <application
         android:label="one_link_app"
         android:name="${applicationName}"
@@ -30,6 +30,16 @@ package="one_link_app" >
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" android:host="flannel-shirt-jellyfish.cyclic.app" />
+                <data android:scheme="https" />
+            </intent-filter>
+
+
+            <!-- <meta-data android:name="flutter_deeplinking_enabled" android:value="true" />
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
             <data
                 android:scheme="http"
@@ -41,7 +51,7 @@ package="one_link_app" >
                 android:host="flannel-shirt-jellyfish.cyclic.app"
                 android:path="" />
 
-            </intent-filter>
+            </intent-filter> -->
 
 
         </activity>
