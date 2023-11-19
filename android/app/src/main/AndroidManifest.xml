@@ -29,7 +29,8 @@ package="com.example.one_link_app" >
                  />
 
                 <data
-                android:scheme="https"                
+                android:scheme="https"         
+                android:host="flannel-shirt-jellyfish.cyclic.app"
                 />
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />

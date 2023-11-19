@@ -1,7 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uni_links/uni_links.dart';
-// import 'package:appsflyer_sdk/appsflyer_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,10 +10,9 @@ import 'package:one_link_app/pages/bananas.dart';
 import 'package:one_link_app/pages/peaches.dart';
 
 final _router = GoRouter(
-  initialLocation: "/",
   routes: [
     GoRoute(
-      path: '/',
+      path: "/",
       builder: (context, state) => const HomePage(),
       routes: [
         GoRoute(
@@ -39,41 +37,32 @@ const Color colorAFGreen = Color.fromARGB(255, 122, 209, 67);
 const Color colorAFDark = Color.fromARGB(255, 19, 19, 19);
 const EdgeInsets horizontalPagePadding = EdgeInsets.symmetric(horizontal: 10);
 
+Future<void> initUniLinks(BuildContext context) async {
+  // Platform messages may fail, so we use a try/catch PlatformException.
+  try {
+    final String? initialLink = await getInitialLink();
+    print("initialLink");
+    print(initialLink);
+    // Parse the link and warn the user, if it is not correct,
+    // but keep in mind it could be `null`.
+  } on PlatformException catch (e) {
+    print(e);
+    // Handle exception by warning the user their action did not succeed
+    // return?
+  }
+}
+
 void main() {
-  // AppsFlyerOptions afOptionsDART = AppsFlyerOptions(
-  //     afDevKey: "sQ84wpdxRTR4RMCaE9YqS4",
-  //     appId: "id1292821412",
-  //     showDebug: true);
-
-  // AppsflyerSdk appsflyerSdk = AppsflyerSdk(afOptionsDART);
-
-  // appsflyerSdk.initSdk(
-  //     registerConversionDataCallback: true,
-  //     registerOnAppOpenAttributionCallback: true,
-  //     registerOnDeepLinkingCallback: true);
-
-  // appsflyerSdk.onInstallConversionData((res) {
-  //   print("res: " + res.toString());
-  // });
-
-  // print("afOptionsDART: " + afOptionsDART.toString());
-  // print("appsflyerSdk: " + appsflyerSdk);
-
   runApp(const MyApp());
-  // appsflyerSdk.onInstallConversionData((res) {
-  //   print("res: " + res.toString());
-  // });
-  // appsflyerSdk.onAppOpenAttribution((res) {
-  //   print("res: " + res.toString());
-  // });
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    initUniLinks(context);
+
     return MaterialApp.router(
       routerConfig: _router,
       debugShowCheckedModeBanner: false,
