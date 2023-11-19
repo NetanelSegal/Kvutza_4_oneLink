@@ -29,12 +29,12 @@ package="com.example.one_link_app" >
                <data
                 android:scheme="http"
                 android:host="flannel-shirt-jellyfish.cyclic.app"
-                android:path="" />
+                android:pathPrefix="" />
 
                 <data
                 android:scheme="https"
                 android:host="flannel-shirt-jellyfish.cyclic.app"
-                android:path="" />
+                android:pathPrefix="" />
             </intent-filter>
 
         </activity>
