@@ -11,21 +11,26 @@ import 'package:one_link_app/pages/bananas.dart';
 import 'package:one_link_app/pages/peaches.dart';
 
 final _router = GoRouter(
+  initialLocation: "/",
   routes: [
-    GoRoute(path: '/', builder: (context, state) => const HomePage(), routes: [
-      GoRoute(
-        path: "apples",
-        builder: (context, state) => const ApplesPage(),
-      ),
-      GoRoute(
-        path: "bananas",
-        builder: (context, state) => const BananasPage(),
-      ),
-      GoRoute(
-        path: "peaches",
-        builder: (context, state) => const PeachesPage(),
-      )
-    ]),
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const HomePage(),
+      routes: [
+        GoRoute(
+          path: "apples",
+          builder: (context, state) => const ApplesPage(),
+        ),
+        GoRoute(
+          path: "bananas",
+          builder: (context, state) => const BananasPage(),
+        ),
+        GoRoute(
+          path: "peaches",
+          builder: (context, state) => const PeachesPage(),
+        )
+      ],
+    ),
   ],
 );
 
@@ -33,21 +38,6 @@ const Color colorAFBlue = Color.fromARGB(255, 0, 194, 255);
 const Color colorAFGreen = Color.fromARGB(255, 122, 209, 67);
 const Color colorAFDark = Color.fromARGB(255, 19, 19, 19);
 const EdgeInsets horizontalPagePadding = EdgeInsets.symmetric(horizontal: 10);
-
-Future<void> initUniLinks() async {
-  // Platform messages may fail, so we use a try/catch PlatformException.
-  try {
-    final String? initialLink = await getInitialLink();
-    if (initialLink != null) {
-      debugPrint("initialLink: $initialLink");
-    }
-    // Parse the link and warn the user, if it is not correct,
-    // but keep in mind it could be `null`.
-  } on PlatformException catch (e) {
-    debugPrint("PlatformException: $e");
-    // Handle the exception accordingly, e.g., show an error message to the user
-  }
-}
 
 void main() {
   // AppsFlyerOptions afOptionsDART = AppsFlyerOptions(
@@ -70,7 +60,6 @@ void main() {
   // print("appsflyerSdk: " + appsflyerSdk);
 
   runApp(const MyApp());
-  initUniLinks();
   // appsflyerSdk.onInstallConversionData((res) {
   //   print("res: " + res.toString());
   // });
@@ -119,13 +108,14 @@ class HomePage extends StatelessWidget {
           width: 130,
         ),
       ),
-      body: const Padding(
+      body: Padding(
         padding: horizontalPagePadding,
         child: Column(
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                Text(GoRouterState.of(context).uri.toString()),
                 Gap(15),
                 Text(
                   "OneLink \nSimulator",
@@ -134,7 +124,7 @@ class HomePage extends StatelessWidget {
                       fontSize: 40, height: 1, fontWeight: FontWeight.w700),
                 ),
                 Text(
-                  "Find the magic of deep link\n parameters",
+                  "Find the magic of deep link parameters",
                   style: TextStyle(
                     fontSize: 18,
                     height: 1.2,
