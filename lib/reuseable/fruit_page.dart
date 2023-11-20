@@ -42,7 +42,7 @@ class FruitPage extends StatelessWidget {
           ),
           Center(
             child: Text(
-              GoRouterState.of(context).uri.toString(),
+              title,
               style: const TextStyle(
                 fontSize: 20,
               ),

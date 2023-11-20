@@ -37,21 +37,6 @@ const Color colorAFGreen = Color.fromARGB(255, 122, 209, 67);
 const Color colorAFDark = Color.fromARGB(255, 19, 19, 19);
 const EdgeInsets horizontalPagePadding = EdgeInsets.symmetric(horizontal: 10);
 
-Future<void> initUniLinks(BuildContext context) async {
-  // Platform messages may fail, so we use a try/catch PlatformException.
-  try {
-    final String? initialLink = await getInitialLink();
-    print("initialLink");
-    print(initialLink);
-    // Parse the link and warn the user, if it is not correct,
-    // but keep in mind it could be `null`.
-  } on PlatformException catch (e) {
-    print(e);
-    // Handle exception by warning the user their action did not succeed
-    // return?
-  }
-}
-
 void main() {
   runApp(const MyApp());
 }
@@ -61,8 +46,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    initUniLinks(context);
-
     return MaterialApp.router(
       routerConfig: _router,
       debugShowCheckedModeBanner: false,
@@ -104,7 +87,6 @@ class HomePage extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(GoRouterState.of(context).uri.toString()),
                 Gap(15),
                 Text(
                   "OneLink \nSimulator",
