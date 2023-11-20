@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
-import 'package:uni_links/uni_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -30,6 +29,10 @@ final _router = GoRouter(
       ],
     ),
   ],
+  onException: (_, GoRouterState state, GoRouter router) {
+    print(state.uri);
+    router.go('/');
+  },
 );
 
 const Color colorAFBlue = Color.fromARGB(255, 0, 194, 255);

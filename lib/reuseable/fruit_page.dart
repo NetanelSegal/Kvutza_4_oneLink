@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:one_link_app/main.dart';
 
 class FruitPage extends StatelessWidget {
   final String imgPath, title;
+  final String url = "https://flannel-shirt-jellyfish.cyclic.app";
 
   const FruitPage(this.imgPath, this.title, {super.key});
 
@@ -59,7 +61,17 @@ class FruitPage extends StatelessWidget {
                       ),
                     ),
                     backgroundColor: MaterialStateProperty.all(colorAFBlue)),
-                onPressed: () {},
+                onPressed: () {
+                  Clipboard.setData(
+                    ClipboardData(
+                        text: GoRouterState.of(context)
+                                .uri
+                                .toString()
+                                .contains(url)
+                            ? GoRouterState.of(context).uri.toString()
+                            : url + GoRouterState.of(context).uri.toString()),
+                  );
+                },
                 icon: const Icon(
                   Icons.copy,
                   size: 24.0,
