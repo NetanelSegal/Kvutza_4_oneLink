@@ -1,5 +1,4 @@
 import 'package:appsflyer_sdk/appsflyer_sdk.dart';
-import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -51,13 +50,14 @@ AppsflyerSdk appsflyerSdk = AppsflyerSdk(appsFlyerOptions);
 void main() {
   runApp(const MyApp());
   appsflyerSdk.initSdk(
-      registerConversionDataCallback: true,
-      registerOnDeepLinkingCallback: true);
+    registerConversionDataCallback: true,
+    registerOnDeepLinkingCallback: true,
+  );
   appsflyerSdk.onInstallConversionData((res) {
-    print("res: " + res.toString());
+    debugPrint("res: $res");
   });
   appsflyerSdk.onDeepLinking((res) {
-    print("res: " + res.toString());
+    debugPrint("res: $res");
   });
 }
 
@@ -100,7 +100,7 @@ class HomePage extends StatelessWidget {
           width: 130,
         ),
       ),
-      body: Padding(
+      body: const Padding(
         padding: horizontalPagePadding,
         child: Column(
           children: [
