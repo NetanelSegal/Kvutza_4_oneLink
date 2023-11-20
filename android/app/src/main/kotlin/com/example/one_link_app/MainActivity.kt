@@ -1,4 +1,4 @@
-package com.example.one_link_app
+package com.appsflyer.fluttersampleapp
 
 import io.flutter.embedding.android.FlutterActivity
 

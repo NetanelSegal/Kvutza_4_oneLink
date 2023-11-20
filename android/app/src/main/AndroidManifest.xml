@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-package="com.example.one_link_app" >
+package="com.appsflyer.fluttersampleapp" >
     <application
-        android:label="one_link_app"
+        android:label="fluttersampleapp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -25,12 +25,12 @@ package="com.example.one_link_app" >
             <intent-filter android:autoVerify="true">
                <data
                 android:scheme="http"
-                android:host="flannel-shirt-jellyfish.cyclic.app"
+                android:host="onelink-basic-app.onelink.me"
                  />
 
                 <data
                 android:scheme="https"         
-                android:host="flannel-shirt-jellyfish.cyclic.app"
+                android:host="onelink-basic-app.onelink.me"
                 />
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
