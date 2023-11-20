@@ -34,49 +34,8 @@ const Color colorAFGreen = Color.fromARGB(255, 122, 209, 67);
 const Color colorAFDark = Color.fromARGB(255, 19, 19, 19);
 const EdgeInsets horizontalPagePadding = EdgeInsets.symmetric(horizontal: 10);
 
-Future<void> initUniLinks() async {
-  // Platform messages may fail, so we use a try/catch PlatformException.
-  try {
-    final String? initialLink = await getInitialLink();
-    if (initialLink != null) {
-      debugPrint("initialLink: $initialLink");
-    }
-    // Parse the link and warn the user, if it is not correct,
-    // but keep in mind it could be `null`.
-  } on PlatformException catch (e) {
-    debugPrint("PlatformException: $e");
-    // Handle the exception accordingly, e.g., show an error message to the user
-  }
-}
-
 void main() {
-  // AppsFlyerOptions afOptionsDART = AppsFlyerOptions(
-  //     afDevKey: "sQ84wpdxRTR4RMCaE9YqS4",
-  //     appId: "id1292821412",
-  //     showDebug: true);
-
-  // AppsflyerSdk appsflyerSdk = AppsflyerSdk(afOptionsDART);
-
-  // appsflyerSdk.initSdk(
-  //     registerConversionDataCallback: true,
-  //     registerOnAppOpenAttributionCallback: true,
-  //     registerOnDeepLinkingCallback: true);
-
-  // appsflyerSdk.onInstallConversionData((res) {
-  //   print("res: " + res.toString());
-  // });
-
-  // print("afOptionsDART: " + afOptionsDART.toString());
-  // print("appsflyerSdk: " + appsflyerSdk);
-
   runApp(const MyApp());
-  initUniLinks();
-  // appsflyerSdk.onInstallConversionData((res) {
-  //   print("res: " + res.toString());
-  // });
-  // appsflyerSdk.onAppOpenAttribution((res) {
-  //   print("res: " + res.toString());
-  // });
 }
 
 class MyApp extends StatelessWidget {
