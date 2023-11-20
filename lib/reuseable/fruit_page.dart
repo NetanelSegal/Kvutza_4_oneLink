@@ -6,7 +6,7 @@ import 'package:one_link_app/main.dart';
 
 class FruitPage extends StatelessWidget {
   final String imgPath, title;
-  final String url = "https://flannel-shirt-jellyfish.cyclic.app";
+  static const String url = "https://flannel-shirt-jellyfish.cyclic.app";
 
   const FruitPage(this.imgPath, this.title, {super.key});
 

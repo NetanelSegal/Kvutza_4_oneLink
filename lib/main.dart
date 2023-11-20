@@ -30,7 +30,6 @@ final _router = GoRouter(
     ),
   ],
   onException: (_, GoRouterState state, GoRouter router) {
-    print(state.uri);
     router.go('/');
   },
 );
