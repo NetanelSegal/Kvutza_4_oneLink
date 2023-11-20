@@ -1,3 +1,4 @@
+import 'package:appsflyer_sdk/appsflyer_sdk.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
@@ -39,8 +40,25 @@ const Color colorAFGreen = Color.fromARGB(255, 122, 209, 67);
 const Color colorAFDark = Color.fromARGB(255, 19, 19, 19);
 const EdgeInsets horizontalPagePadding = EdgeInsets.symmetric(horizontal: 10);
 
+AppsFlyerOptions appsFlyerOptions = AppsFlyerOptions(
+  afDevKey: "sQ84wpdxRTR4RMCaE9YqS4",
+  appId: "id1292821412",
+  showDebug: true,
+);
+
+AppsflyerSdk appsflyerSdk = AppsflyerSdk(appsFlyerOptions);
+
 void main() {
   runApp(const MyApp());
+  appsflyerSdk.initSdk(
+      registerConversionDataCallback: true,
+      registerOnDeepLinkingCallback: true);
+  appsflyerSdk.onInstallConversionData((res) {
+    print("res: " + res.toString());
+  });
+  appsflyerSdk.onDeepLinking((res) {
+    print("res: " + res.toString());
+  });
 }
 
 class MyApp extends StatelessWidget {
