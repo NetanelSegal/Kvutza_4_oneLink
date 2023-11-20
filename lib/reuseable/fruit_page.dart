@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:one_link_app/main.dart';
 
 class FruitPage extends StatelessWidget {
@@ -9,8 +10,6 @@ class FruitPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(Uri.base.toString());
-
     return Scaffold(
       bottomNavigationBar: Container(
         height: 80,

@@ -23,18 +23,18 @@ package="com.example.one_link_app" >
 
             <meta-data android:name="flutter_deeplinking_enabled" android:value="true" />
             <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
                <data
                 android:scheme="http"
                 android:host="flannel-shirt-jellyfish.cyclic.app"
                  />
 
                 <data
-                android:scheme="https"
+                android:scheme="https"         
                 android:host="flannel-shirt-jellyfish.cyclic.app"
                 />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
 
         </activity>

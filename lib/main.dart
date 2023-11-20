@@ -1,7 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uni_links/uni_links.dart';
-// import 'package:appsflyer_sdk/appsflyer_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,20 +11,24 @@ import 'package:one_link_app/pages/peaches.dart';
 
 final _router = GoRouter(
   routes: [
-    GoRoute(path: '/', builder: (context, state) => const HomePage(), routes: [
-      GoRoute(
-        path: "apples",
-        builder: (context, state) => const ApplesPage(),
-      ),
-      GoRoute(
-        path: "bananas",
-        builder: (context, state) => const BananasPage(),
-      ),
-      GoRoute(
-        path: "peaches",
-        builder: (context, state) => const PeachesPage(),
-      )
-    ]),
+    GoRoute(
+      path: "/",
+      builder: (context, state) => const HomePage(),
+      routes: [
+        GoRoute(
+          path: "apples",
+          builder: (context, state) => const ApplesPage(),
+        ),
+        GoRoute(
+          path: "bananas",
+          builder: (context, state) => const BananasPage(),
+        ),
+        GoRoute(
+          path: "peaches",
+          builder: (context, state) => const PeachesPage(),
+        )
+      ],
+    ),
   ],
 );
 
@@ -41,7 +44,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
@@ -78,7 +80,7 @@ class HomePage extends StatelessWidget {
           width: 130,
         ),
       ),
-      body: const Padding(
+      body: Padding(
         padding: horizontalPagePadding,
         child: Column(
           children: [
@@ -93,7 +95,7 @@ class HomePage extends StatelessWidget {
                       fontSize: 40, height: 1, fontWeight: FontWeight.w700),
                 ),
                 Text(
-                  "Find the magic of deep link\n parameters",
+                  "Find the magic of deep link parameters",
                   style: TextStyle(
                     fontSize: 18,
                     height: 1.2,
