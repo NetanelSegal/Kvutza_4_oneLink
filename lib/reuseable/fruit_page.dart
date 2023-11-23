@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:one_link_app/main.dart';
+import 'package:one_link_app/utils/varibles.dart';
 
 class FruitPage extends StatelessWidget {
   final String imgPath, title;

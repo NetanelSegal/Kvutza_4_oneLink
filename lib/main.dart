@@ -7,6 +7,7 @@ import 'package:gap/gap.dart';
 import 'package:one_link_app/pages/apples.dart';
 import 'package:one_link_app/pages/bananas.dart';
 import 'package:one_link_app/pages/peaches.dart';
+import 'package:one_link_app/utils/varibles.dart';
 
 final _router = GoRouter(
   routes: [
@@ -34,11 +35,6 @@ final _router = GoRouter(
   },
 );
 
-const Color colorAFBlue = Color.fromARGB(255, 0, 194, 255);
-const Color colorAFGreen = Color.fromARGB(255, 122, 209, 67);
-const Color colorAFDark = Color.fromARGB(255, 19, 19, 19);
-const EdgeInsets horizontalPagePadding = EdgeInsets.symmetric(horizontal: 10);
-
 AppsFlyerOptions appsFlyerOptions = AppsFlyerOptions(
   afDevKey: "sQ84wpdxRTR4RMCaE9YqS4",
   appId: "id1292821412",
@@ -47,22 +43,52 @@ AppsFlyerOptions appsFlyerOptions = AppsFlyerOptions(
 
 AppsflyerSdk appsflyerSdk = AppsflyerSdk(appsFlyerOptions);
 
+void appsFlyerSDKInitializer(context) {
+  appsflyerSdk.onInstallConversionData((res) {
+    debugPrint("onInstallConversionData res: $res");
+    debugPrint(res.payload);
+  });
+
+  appsflyerSdk.onDeepLinking((DeepLinkResult res) {
+    switch (res.status) {
+      case Status.FOUND:
+        switch (res.deepLink?.deepLinkValue) {
+          case "apples":
+            GoRouter.of(context).push("/apples");
+            break;
+          case "bananas":
+            GoRouter.of(context).push("/bananas");
+            break;
+          case "peaches":
+            GoRouter.of(context).push("/peaches");
+            break;
+        }
+
+        break;
+      case Status.NOT_FOUND:
+        print("deep link not found");
+        break;
+      case Status.ERROR:
+        print("deep link error: ${res.error}");
+        break;
+      case Status.PARSE_ERROR:
+        print("deep link status parsing error");
+        break;
+    }
+  });
+}
+
 void main() {
-  runApp(const MyApp());
   appsflyerSdk.initSdk(
     registerConversionDataCallback: true,
     registerOnDeepLinkingCallback: true,
   );
-  appsflyerSdk.onInstallConversionData((res) {
-    debugPrint("res: $res");
-  });
-  appsflyerSdk.onDeepLinking((res) {
-    debugPrint("res: $res");
-  });
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -86,9 +112,10 @@ class MyApp extends StatelessWidget {
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => appsFlyerSDKInitializer(context));
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
