@@ -7,6 +7,7 @@ import 'package:gap/gap.dart';
 import 'package:one_link_app/pages/apples.dart';
 import 'package:one_link_app/pages/bananas.dart';
 import 'package:one_link_app/pages/peaches.dart';
+import 'package:one_link_app/utils/appsFlyerSDK.dart';
 import 'package:one_link_app/utils/varibles.dart';
 
 final _router = GoRouter(
@@ -35,60 +36,14 @@ final _router = GoRouter(
   },
 );
 
-AppsFlyerOptions appsFlyerOptions = AppsFlyerOptions(
-  afDevKey: "sQ84wpdxRTR4RMCaE9YqS4",
-  appId: "id1292821412",
-  showDebug: true,
-);
-
-AppsflyerSdk appsflyerSdk = AppsflyerSdk(appsFlyerOptions);
-
-void appsFlyerSDKInitializer(context) {
-  appsflyerSdk.onInstallConversionData((res) {
-    debugPrint("onInstallConversionData res: $res");
-    debugPrint(res.payload);
-  });
-
-  appsflyerSdk.onDeepLinking((DeepLinkResult res) {
-    switch (res.status) {
-      case Status.FOUND:
-        switch (res.deepLink?.deepLinkValue) {
-          case "apples":
-            GoRouter.of(context).push("/apples");
-            break;
-          case "bananas":
-            GoRouter.of(context).push("/bananas");
-            break;
-          case "peaches":
-            GoRouter.of(context).push("/peaches");
-            break;
-        }
-
-        break;
-      case Status.NOT_FOUND:
-        print("deep link not found");
-        break;
-      case Status.ERROR:
-        print("deep link error: ${res.error}");
-        break;
-      case Status.PARSE_ERROR:
-        print("deep link status parsing error");
-        break;
-    }
-  });
-}
-
 void main() {
-  appsflyerSdk.initSdk(
-    registerConversionDataCallback: true,
-    registerOnDeepLinkingCallback: true,
-  );
+  runApp(const MyApp());
 
-  runApp(MyApp());
+  appsFlyerSDKInitializer();
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -114,8 +69,39 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => appsFlyerSDKInitializer(context));
+    appsflyerSdk.onDeepLinking((DeepLinkResult res) {
+      switch (res.status) {
+        case Status.FOUND:
+          deepLinkData = res.deepLink;
+          print(deepLinkData);
+          switch (res.deepLink?.deepLinkValue) {
+            case "apples":
+              GoRouter.of(context).push("/apples");
+              break;
+            case "bananas":
+              GoRouter.of(context).push("/bananas");
+              break;
+            case "peaches":
+              GoRouter.of(context).push("/peaches");
+              break;
+          }
+          break;
+        case Status.NOT_FOUND:
+          print("deep link not found");
+          break;
+        case Status.ERROR:
+          print("deep link error: ${res.error}");
+          break;
+        case Status.PARSE_ERROR:
+          print("deep link status parsing error");
+          break;
+      }
+    });
+
+    appsflyerSdk.onInstallConversionData((res) {
+      conversionData = res;
+    });
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
