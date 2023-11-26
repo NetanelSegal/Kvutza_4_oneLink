@@ -9,6 +9,7 @@ import 'package:one_link_app/pages/bananas.dart';
 import 'package:one_link_app/pages/peaches.dart';
 import 'package:one_link_app/utils/appsFlyerSDK.dart';
 import 'package:one_link_app/utils/varibles.dart';
+import 'package:flutter/services.dart';
 
 final _router = GoRouter(
   routes: [
@@ -47,6 +48,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp.router(
       routerConfig: _router,
       debugShowCheckedModeBanner: false,
