@@ -1,16 +1,16 @@
+import 'package:appsflyer_sdk/appsflyer_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:one_link_app/reuseable/conversionDataPage.dart';
 import 'package:one_link_app/utils/appsFlyerSDK.dart';
 import 'package:one_link_app/utils/varibles.dart';
 
 class FruitPage extends StatelessWidget {
   final String imgPath, title;
-  static const String url = "https://onelink-basic-app.onelink.me";
+  final AppsFlyerInviteLinkParams linkParams;
 
-  const FruitPage(this.imgPath, this.title, {super.key});
+  FruitPage(this.imgPath, this.title, {super.key, required this.linkParams});
 
   @override
   Widget build(BuildContext context) {
@@ -102,12 +102,12 @@ class FruitPage extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              Clipboard.setData(
-                ClipboardData(
-                    text: GoRouterState.of(context).uri.toString().contains(url)
-                        ? GoRouterState.of(context).uri.toString()
-                        : url + GoRouterState.of(context).uri.toString()),
-              );
+              appsflyerSdk.generateInviteLink(linkParams, (result) {
+                Clipboard.setData(
+                    ClipboardData(text: result["payload"]["userInviteURL"]));
+              }, (error) {
+                print("error-123 $error");
+              });
             },
             icon: const Icon(
               Icons.copy,
