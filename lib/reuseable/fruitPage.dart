@@ -7,13 +7,16 @@ import 'package:one_link_app/utils/appsFlyerSDK.dart';
 import 'package:one_link_app/utils/varibles.dart';
 
 class FruitPage extends StatelessWidget {
-  final String imgPath, title;
-  final AppsFlyerInviteLinkParams linkParams;
+  final String imgPath, title, fruit, sub1;
 
-  FruitPage(this.imgPath, this.title, {super.key, required this.linkParams});
+  FruitPage(this.imgPath, this.title, this.fruit, this.sub1, {super.key});
 
   @override
   Widget build(BuildContext context) {
+    AppsFlyerInviteLinkParams linkParams = AppsFlyerInviteLinkParams(
+        baseDeepLink: "onelink-basic-app.onelink.me",
+        customParams: {"deep_link_value": fruit, "deep_link_sub1": sub1});
+
     return Scaffold(
       bottomNavigationBar: Container(
         height: 70,

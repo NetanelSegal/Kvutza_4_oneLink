@@ -16,17 +16,5 @@ AppsFlyerOptions appsFlyerOptions = AppsFlyerOptions(
 
 AppsflyerSdk appsflyerSdk = AppsflyerSdk(appsFlyerOptions);
 
-AppsFlyerInviteLinkParams inviteLinkParamsApples = AppsFlyerInviteLinkParams(
-    baseDeepLink: "onelink-basic-app.onelink.me",
-    customParams: {"deep_link_value": "apples", "deep_link_sub1": "20"});
-
-AppsFlyerInviteLinkParams inviteLinkParamsBananas = AppsFlyerInviteLinkParams(
-    baseDeepLink: "onelink-basic-app.onelink.me",
-    customParams: {"deep_link_value": "bananas", "deep_link_sub1": "15"});
-
-AppsFlyerInviteLinkParams inviteLinkParamsPeaches = AppsFlyerInviteLinkParams(
-    baseDeepLink: "onelink-basic-app.onelink.me",
-    customParams: {"deep_link_value": "peaches", "deep_link_sub1": "30"});
-
 var conversionData;
 DeepLink? deepLinkData;
