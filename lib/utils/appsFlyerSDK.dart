@@ -21,9 +21,11 @@ AppsflyerSdk appsflyerSdk = AppsflyerSdk(appsFlyerOptions);
 DeepLink? deepLinkData;
 
 class ConvDataProvider extends ChangeNotifier {
-  Map<String, dynamic>? convData;
+  var convData;
 
-  setConvData({required Map<String, dynamic> convData}) {
+  ConvDataProvider({this.convData = "No Conversion data"});
+
+  setConvData({required convData}) async {
     this.convData = convData;
     notifyListeners();
   }

@@ -9,6 +9,7 @@ class ConversionDataPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("object");
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -20,7 +21,7 @@ class ConversionDataPage extends StatelessWidget {
           width: 130,
         ),
       ),
-      body: context.watch<ConvDataProvider>().convData != null
+      body: context.watch<ConvDataProvider>().convData["af_status"] != null
           ? Padding(
               padding: horizontalPagePadding,
               child: Column(
