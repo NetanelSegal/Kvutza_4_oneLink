@@ -1,4 +1,5 @@
 import 'package:appsflyer_sdk/appsflyer_sdk.dart';
+import 'package:flutter/material.dart';
 
 void appsFlyerSDKInitializer() {
   appsflyerSdk.initSdk(
@@ -16,5 +17,14 @@ AppsFlyerOptions appsFlyerOptions = AppsFlyerOptions(
 
 AppsflyerSdk appsflyerSdk = AppsflyerSdk(appsFlyerOptions);
 
-var conversionData;
+// var conversionData;
 DeepLink? deepLinkData;
+
+class ConvDataProvider extends ChangeNotifier {
+  Map<String, dynamic>? convData;
+
+  setConvData({required Map<String, dynamic> convData}) {
+    this.convData = convData;
+    notifyListeners();
+  }
+}

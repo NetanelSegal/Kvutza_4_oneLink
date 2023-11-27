@@ -10,6 +10,7 @@ import 'package:one_link_app/pages/peaches.dart';
 import 'package:one_link_app/utils/appsFlyerSDK.dart';
 import 'package:one_link_app/utils/varibles.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 final _router = GoRouter(
   routes: [
@@ -52,19 +53,24 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return MaterialApp.router(
-      routerConfig: _router,
-      debugShowCheckedModeBanner: false,
-      title: 'One Link AppsFlyer',
-      theme: ThemeData(
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(
-            color: colorAFDark,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ConvDataProvider()),
+      ],
+      child: MaterialApp.router(
+        routerConfig: _router,
+        debugShowCheckedModeBanner: false,
+        title: 'One Link AppsFlyer',
+        theme: ThemeData(
+          textTheme: const TextTheme(
+            bodyMedium: TextStyle(
+              color: colorAFDark,
+            ),
           ),
+          primaryColor: colorAFBlue,
+          fontFamily: "Inter",
+          useMaterial3: true,
         ),
-        primaryColor: colorAFBlue,
-        fontFamily: "Inter",
-        useMaterial3: true,
       ),
     );
   }
@@ -104,7 +110,7 @@ class HomePage extends StatelessWidget {
     });
 
     appsflyerSdk.onInstallConversionData((res) {
-      conversionData = res;
+      context.read<ConvDataProvider>().setConvData(convData: res["payload"]);
     });
 
     return Scaffold(

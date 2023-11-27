@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:one_link_app/utils/varibles.dart';
 import 'package:one_link_app/utils/appsFlyerSDK.dart';
+import 'package:provider/provider.dart';
 
 class ConversionDataPage extends StatelessWidget {
   const ConversionDataPage({super.key});
@@ -19,7 +20,7 @@ class ConversionDataPage extends StatelessWidget {
           width: 130,
         ),
       ),
-      body: conversionData != null
+      body: context.watch<ConvDataProvider>().convData != null
           ? Padding(
               padding: horizontalPagePadding,
               child: Column(
@@ -31,7 +32,10 @@ class ConversionDataPage extends StatelessWidget {
                         "af_message: ",
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
-                      Text(conversionData["payload"]["af_message"].toString()),
+                      Text(context
+                          .watch<ConvDataProvider>()
+                          .convData!["af_message"]
+                          .toString()),
                     ],
                   ),
                   Row(
@@ -40,7 +44,10 @@ class ConversionDataPage extends StatelessWidget {
                         "af_status: ",
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
-                      Text(conversionData["payload"]["af_status"].toString()),
+                      Text(context
+                          .watch<ConvDataProvider>()
+                          .convData!["af_status"]
+                          .toString()),
                     ],
                   ),
                   Row(
@@ -49,8 +56,10 @@ class ConversionDataPage extends StatelessWidget {
                         "install_time: ",
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
-                      Text(
-                          conversionData["payload"]["install_time"].toString()),
+                      Text(context
+                          .watch<ConvDataProvider>()
+                          .convData!["install_time"]
+                          .toString()),
                     ],
                   ),
                   Row(
@@ -59,7 +68,9 @@ class ConversionDataPage extends StatelessWidget {
                         "is_first_launch: ",
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
-                      Text(conversionData["payload"]["is_first_launch"]
+                      Text(context
+                          .watch<ConvDataProvider>()
+                          .convData!["is_first_launch"]
                           .toString()),
                     ],
                   ),
