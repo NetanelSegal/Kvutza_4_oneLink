@@ -7,15 +7,15 @@ import 'package:one_link_app/utils/appsFlyerSDK.dart';
 import 'package:one_link_app/utils/varibles.dart';
 
 class FruitPage extends StatelessWidget {
-  final String imgPath, title, fruit, sub1;
+  final String fruit, sub1Value;
 
-  FruitPage(this.imgPath, this.title, this.fruit, this.sub1, {super.key});
+  FruitPage({super.key, required this.sub1Value, required this.fruit});
 
   @override
   Widget build(BuildContext context) {
     AppsFlyerInviteLinkParams linkParams = AppsFlyerInviteLinkParams(
         baseDeepLink: "onelink-basic-app.onelink.me",
-        customParams: {"deep_link_value": fruit, "deep_link_sub1": sub1});
+        customParams: {"deep_link_value": fruit, "deep_link_sub1": sub1Value});
 
     return Scaffold(
       bottomNavigationBar: Container(
@@ -48,14 +48,14 @@ class FruitPage extends StatelessWidget {
           width: 130,
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          deepLinkData != null
-              ? Stack(
+      body: deepLinkData?.deepLinkValue == fruit
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Stack(
                   alignment: Alignment.center,
                   children: [
-                    Image.asset(imgPath),
+                    Image.asset("assets/images/$fruit.png"),
                     Text(
                       deepLinkData!.clickEvent["deep_link_sub1"],
                       style: const TextStyle(
@@ -65,10 +65,8 @@ class FruitPage extends StatelessWidget {
                       ),
                     )
                   ],
-                )
-              : Image.asset(imgPath),
-          deepLinkData != null
-              ? Expanded(
+                ),
+                Expanded(
                   child: ListView(
                     padding: horizontalPagePadding,
                     children: [
@@ -88,8 +86,42 @@ class FruitPage extends StatelessWidget {
                         ),
                     ],
                   ),
-                )
-              : const Center(
+                ),
+                ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: colorAFBlue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                  onPressed: () {
+                    appsflyerSdk.generateInviteLink(linkParams, (result) {
+                      Clipboard.setData(ClipboardData(
+                          text: result["payload"]["userInviteURL"]));
+                    }, (error) {
+                      print("error-123 $error");
+                    });
+                  },
+                  icon: const Icon(
+                    Icons.copy,
+                    size: 24.0,
+                    color: Colors.white,
+                  ),
+                  label: const Text(
+                    'Copy link',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            )
+          : Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset("assets/images/$fruit.png"),
+                const Center(
                   child: Text(
                     "No deep link happened",
                     style: TextStyle(
@@ -97,36 +129,36 @@ class FruitPage extends StatelessWidget {
                     ),
                   ),
                 ),
-          ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: colorAFBlue,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
+                ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: colorAFBlue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                  onPressed: () {
+                    appsflyerSdk.generateInviteLink(linkParams, (result) {
+                      Clipboard.setData(ClipboardData(
+                          text: result["payload"]["userInviteURL"]));
+                    }, (error) {
+                      print("error-123 $error");
+                    });
+                  },
+                  icon: const Icon(
+                    Icons.copy,
+                    size: 24.0,
+                    color: Colors.white,
+                  ),
+                  label: const Text(
+                    'Copy link',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
             ),
-            onPressed: () {
-              appsflyerSdk.generateInviteLink(linkParams, (result) {
-                Clipboard.setData(
-                    ClipboardData(text: result["payload"]["userInviteURL"]));
-              }, (error) {
-                print("error-123 $error");
-              });
-            },
-            icon: const Icon(
-              Icons.copy,
-              size: 24.0,
-              color: Colors.white,
-            ),
-            label: const Text(
-              'Copy link',
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
