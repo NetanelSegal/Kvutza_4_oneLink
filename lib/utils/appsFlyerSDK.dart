@@ -1,5 +1,6 @@
 import 'package:appsflyer_sdk/appsflyer_sdk.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 void appsFlyerSDKInitializer() {
   appsflyerSdk.initSdk(
@@ -17,7 +18,6 @@ AppsFlyerOptions appsFlyerOptions = AppsFlyerOptions(
 
 AppsflyerSdk appsflyerSdk = AppsflyerSdk(appsFlyerOptions);
 
-// var conversionData;
 DeepLink? deepLinkData;
 
 class ConvDataProvider extends ChangeNotifier {
@@ -28,5 +28,19 @@ class ConvDataProvider extends ChangeNotifier {
   setConvData({required convData}) async {
     this.convData = convData;
     notifyListeners();
+  }
+}
+
+handleDeepLinkValue(deepLinkValue, context) {
+  switch (deepLinkValue) {
+    case "apples":
+      GoRouter.of(context).push("/apples");
+      break;
+    case "bananas":
+      GoRouter.of(context).push("/bananas");
+      break;
+    case "peaches":
+      GoRouter.of(context).push("/peaches");
+      break;
   }
 }

@@ -48,7 +48,8 @@ class FruitPage extends StatelessWidget {
           width: 130,
         ),
       ),
-      body: deepLinkData?.deepLinkValue == fruit
+      body: deepLinkData?.deepLinkValue == fruit ||
+              deepLinkData?.clickEvent["fruit_name"] == fruit
           ? Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -56,14 +57,23 @@ class FruitPage extends StatelessWidget {
                   alignment: Alignment.center,
                   children: [
                     Image.asset("assets/images/$fruit.png"),
-                    Text(
-                      deepLinkData!.clickEvent["deep_link_sub1"],
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 32,
-                      ),
-                    )
+                    deepLinkData?.deepLinkValue != null
+                        ? Text(
+                            deepLinkData!.clickEvent["deep_link_sub1"],
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 32,
+                            ),
+                          )
+                        : Text(
+                            deepLinkData!.clickEvent["fruit_amount"],
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 32,
+                            ),
+                          ),
                   ],
                 ),
                 Expanded(

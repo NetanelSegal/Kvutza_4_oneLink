@@ -9,7 +9,6 @@ class ConversionDataPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("object");
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -21,7 +20,7 @@ class ConversionDataPage extends StatelessWidget {
           width: 130,
         ),
       ),
-      body: context.watch<ConvDataProvider>().convData["af_status"] != null
+      body: context.watch<ConvDataProvider>().convData is Map<String, dynamic>
           ? Padding(
               padding: horizontalPagePadding,
               child: Column(
@@ -57,10 +56,12 @@ class ConversionDataPage extends StatelessWidget {
                         "install_time: ",
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
-                      Text(context
-                          .watch<ConvDataProvider>()
-                          .convData!["install_time"]
-                          .toString()),
+                      Text(
+                        context
+                            .watch<ConvDataProvider>()
+                            .convData!["install_time"]
+                            .toString(),
+                      ),
                     ],
                   ),
                   Row(

@@ -40,8 +40,10 @@ final _router = GoRouter(
 
 void main() {
   runApp(const MyApp());
-
-  appsFlyerSDKInitializer();
+  appsflyerSdk.initSdk(
+    registerConversionDataCallback: true,
+    registerOnDeepLinkingCallback: true,
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -80,22 +82,21 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
-    appsflyerSdk.onDeepLinking((DeepLinkResult res) {
+    appsflyerSdk.onDeepLinking((res) {
       switch (res.status) {
         case Status.FOUND:
           deepLinkData = res.deepLink;
-          print(deepLinkData);
-          switch (res.deepLink?.deepLinkValue) {
-            case "apples":
-              GoRouter.of(context).push("/apples");
-              break;
-            case "bananas":
-              GoRouter.of(context).push("/bananas");
-              break;
-            case "peaches":
-              GoRouter.of(context).push("/peaches");
-              break;
+
+          String? navigateTo;
+
+          if (deepLinkData?.getStringValue("fruit_name") != null &&
+              deepLinkData?.getStringValue("fruit_amount") != null) {
+            navigateTo = deepLinkData?.getStringValue("fruit_name");
+          } else {
+            navigateTo = deepLinkData?.deepLinkValue;
           }
+
+          handleDeepLinkValue(navigateTo, context); // navigation to route
           break;
         case Status.NOT_FOUND:
           print("deep link not found");
